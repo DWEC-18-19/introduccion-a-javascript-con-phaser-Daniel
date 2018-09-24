@@ -101,9 +101,10 @@ window.onload = function () {
     //Load images
     game.load.image('platform', 'platform_1.png');
     game.load.image('platform_2','platform_2.png');
+    game.load.image('background','background.png');
     
     //Load spritesheets
-    game.load.spritesheet('player', 'chalkers.png', 48, 62);
+    game.load.spritesheet('player', 'mikethefrog.png', 32, 32);
     game.load.spritesheet('coin', 'coin.png', 36, 44);
     game.load.spritesheet('badge', 'badge.png', 42, 54);
     game.load.spritesheet('star','star.png',32,32);
@@ -112,6 +113,9 @@ window.onload = function () {
 
   // initial game set up
   function create() {
+    //Creating background
+    var bg = game.add.sprite(0,0,'background');
+
     player = game.add.sprite(50, 600, 'player');
     player.animations.add('walk');
     player.anchor.setTo(0.5, 1);
