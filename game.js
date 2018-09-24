@@ -11,6 +11,7 @@ var winningMessage;
 var won = false;
 var currentScore = 0;
 var winningScore = 100;
+var lives = 3;
 
 // add collectable items to the game
 function addItems() {
@@ -29,6 +30,8 @@ function addItems() {
   //Poisons
   createItem(370,500,'poison');
   createItem(375,100,'poison');
+  createItem(650,425,'poison');
+  createItem(100,375,'poison');
 }
 
 // add platforms to the game
@@ -75,13 +78,17 @@ function itemHandler(player, item) {
       break;
     case 'poison':
       item.kill();
-      currentScore = currentScore - 10;
+      lives--;
       break;
   }
   
   if (currentScore === winningScore) {
       createBadge();
   }
+
+  if (lives === 0) {
+    location.reload();
+}
 }
 
 // when the player collects the badge at the end of the game
@@ -135,7 +142,7 @@ window.onload = function () {
 
   // while the game is running
   function update() {
-    text.text = "SCORE: " + currentScore;
+    text.text = "SCORE: " + currentScore + "\nLIVES: " + lives;
     game.physics.arcade.collide(player, platforms);
     game.physics.arcade.overlap(player, items, itemHandler);
     game.physics.arcade.overlap(player, badges, badgeHandler);
