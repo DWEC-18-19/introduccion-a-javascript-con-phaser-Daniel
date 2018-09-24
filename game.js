@@ -15,6 +15,7 @@ var winningScore = 100;
 // add collectable items to the game
 function addItems() {
   items = game.add.physicsGroup();
+  //Coins
   createItem(225, 500, 'coin');
   createItem(575, 500, 'coin');
   createItem(375, 400, 'coin');
@@ -23,7 +24,11 @@ function addItems() {
   createItem(650, 250, 'coin');
   createItem(225, 200, 'coin');
   createItem(575, 150, 'coin');
-  createItem(375, 100, 'coin');
+  //Stars
+  createItem(125,50,'star');
+  //Poisons
+  createItem(370,500,'poison');
+  createItem(375,100,'poison');
 }
 
 // add platforms to the game
@@ -88,6 +93,8 @@ window.onload = function () {
     game.load.spritesheet('player', 'chalkers.png', 48, 62);
     game.load.spritesheet('coin', 'coin.png', 36, 44);
     game.load.spritesheet('badge', 'badge.png', 42, 54);
+    game.load.spritesheet('star','star.png',32,32);
+    game.load.spritesheet('poison','poison.png',32,32);
   }
 
   // initial game set up
