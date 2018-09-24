@@ -64,8 +64,21 @@ function createBadge() {
 
 // when the player collects an item on the screen
 function itemHandler(player, item) {
-  item.kill();
-  currentScore = currentScore + 10;
+  switch(item.key){
+    case 'coin':
+      item.kill();
+      currentScore = currentScore + 10;
+      break;
+    case 'star':
+      item.kill();
+      currentScore = currentScore + 20;
+      break;
+    case 'poison':
+      item.kill();
+      currentScore = currentScore - 10;
+      break;
+  }
+  
   if (currentScore === winningScore) {
       createBadge();
   }
